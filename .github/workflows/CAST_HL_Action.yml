@@ -18,7 +18,7 @@ description: Run CAST Highlight scans on your code to get Software Intelligence 
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   scan:
