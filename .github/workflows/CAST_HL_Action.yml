@@ -1,9 +1,9 @@
 # Shopizer HL scan action
 name: CAST Highlight Scan
 
-branding:
-  icon: "code"
-  color: "yellow"
+#branding:
+#icon: "code"
+#  color: "yellow"
 
 description: Run CAST Highlight scans on your code to get Software Intelligence insights (vulnerabilities, cloud readiness, etc.)
 
