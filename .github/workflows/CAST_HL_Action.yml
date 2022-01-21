@@ -1,20 +1,7 @@
 # Shopizer HL scan action
+# Run CAST Highlight scans on your code to get Software Intelligence insights (vulnerabilities, cloud readiness, etc.)
+#
 name: CAST Highlight Scan
-
-#branding:
-#icon: "code"
-#  color: "yellow"
-
-#description: Run CAST Highlight scans on your code to get Software Intelligence insights (vulnerabilities, cloud readiness, etc.)
-
-# action triggers, here every two weeks (days 5 and 15 of the month) at 6am
-#on:
-
-#  workflow_dispatch:
-#    branches: [ main ]
-
-#  schedule:
-#    - cron: 0 6 1,15 * *
 
 on:
   push:
