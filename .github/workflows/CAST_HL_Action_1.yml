@@ -1,3 +1,4 @@
+# dummy
 # Shopizer HL scan action
 # Run CAST Highlight scans on your code to get Software Intelligence insights (vulnerabilities, cloud readiness, etc.)
 name: CAST Highlight Scan
