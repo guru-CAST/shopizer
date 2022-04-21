@@ -1,4 +1,9 @@
 # Docker
+- task: Docker@2
+  inputs:
+    containerRegistry: 'hl-docker'
+    command: 'run'
+    arguments: '-v $(Build.SourcesDirectory):/here -v $(Agent.TempDirectory):/there casthighlight/hl-agent-cli:5.1.9 –sourceDir here –workingDir there –skipUpload'
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
