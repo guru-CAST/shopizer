@@ -3,7 +3,7 @@
 - task: DownloadGitHubRelease@0
   inputs:
     connection:
-    userRepository: 
+    userRepository: guru-CAST
     #defaultVersionType: 'latest' # Options: latest, specificVersion, specificTag
     #version: # Required when defaultVersionType != Latest
     #itemPattern: '**' # Optional
