@@ -2,8 +2,8 @@
 # Downloads a GitHub Release from a repository
 - task: DownloadGitHubRelease@0
   inputs:
-    connection:
-    userRepository: guru-CAST
+    connection: guru-CAST
+    userRepository: 
     #defaultVersionType: 'latest' # Options: latest, specificVersion, specificTag
     #version: # Required when defaultVersionType != Latest
     #itemPattern: '**' # Optional
