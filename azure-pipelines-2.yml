@@ -4,7 +4,7 @@
   inputs:
     connection: 
     userRepository: 
-    defaultVersionType: 'latest' # Options: latest, specificVersion, specificTag
+    #defaultVersionType: 'latest' # Options: latest, specificVersion, specificTag
     #version: # Required when defaultVersionType != Latest
     #itemPattern: '**' # Optional
     downloadPath: '$(System.ArtifactsDirectory)'
