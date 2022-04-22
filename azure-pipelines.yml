@@ -17,13 +17,11 @@ stages:
   pool:
       vmImage: windows-latest
     steps:
-    - task: Docker@2
+    - task: Checkout@2
       displayName: Build an image
-      inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/sm-shop/Dockerfile'
-        tags: 
-          $(tag)
+      steps:
+        checkout: 
+        path: lastst
 
 - task: Docker@2
   inputs:
