@@ -17,11 +17,8 @@ stages:
   pool:
       vmImage: windows-latest
     steps:
-    - task: Checkout@2
-      displayName: Build an image
-      steps:
         checkout: 
-        path: lastst
+        path: latest
 
 - task: Docker@2
   inputs:
