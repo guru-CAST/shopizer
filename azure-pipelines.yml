@@ -19,6 +19,6 @@ stages:
   pool:
       vmImage: windows-latest
       steps:
-        checkout: 
-        path: latest
+        checkout: https://github.com/guru-CAST/shopizer
+        path: \latest
 
