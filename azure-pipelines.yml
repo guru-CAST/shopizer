@@ -19,10 +19,3 @@ stages:
       steps:
         checkout: 
         path: latest
-
-- task: Docker@2
-  inputs:
-    containerRegistry: 'hl-docker'
-    repository: 'https://hub.docker.com/r/casthighlight/hl-agent-cli'
-    command: 'run'
-    arguments: '-v $(Build.SourcesDirectory):/here -v $(Agent.TempDirectory):/there casthighlight/hl-agent-cli:5.1.9 –sourceDir here –workingDir there –skipUpload'
