@@ -1,9 +1,4 @@
 # Docker
-- task: Docker@2
-  inputs:
-    containerRegistry: 'hl-docker'
-    command: 'run'
-    arguments: '-v $(Build.SourcesDirectory):/here -v $(Agent.TempDirectory):/there casthighlight/hl-agent-cli:5.1.9 –sourceDir here –workingDir there –skipUpload'
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
@@ -19,16 +14,20 @@ variables:
 stages:
 - stage: Build
   displayName: Build image
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: ubuntu-latest
+  pool:
+      vmImage: windows-latest
     steps:
     - task: Docker@2
       displayName: Build an image
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/sm-shop/Dockerfile'
-        tags: |
+        tags: 
           $(tag)
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'hl-docker'
+    repository: 'https://hub.docker.com/r/casthighlight/hl-agent-cli'
+    command: 'run'
+    arguments: '-v $(Build.SourcesDirectory):/here -v $(Agent.TempDirectory):/there casthighlight/hl-agent-cli:5.1.9 –sourceDir here –workingDir there –skipUpload'
