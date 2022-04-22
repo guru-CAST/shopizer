@@ -16,7 +16,7 @@ stages:
   displayName: Build image
   pool:
       vmImage: windows-latest
-    steps:
+      steps:
         checkout: 
         path: latest
 
