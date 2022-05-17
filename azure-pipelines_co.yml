@@ -10,8 +10,8 @@ parameters:
 trigger:
 - main
 
-pool: FabrikamPool
-#  vmImage: 'ubuntu-latest'
+pool: #FabrikamPool
+  vmImage: 'ubuntu-latest'
 
 steps:
 - checkout: self
