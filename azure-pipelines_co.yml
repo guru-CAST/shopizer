@@ -28,7 +28,7 @@ jobs:
   
 - job: CP
   pool: 
-   vmImage: 'gpai0724.Default.GPRLAP'
+   vmImage: 'GPRLAP'
   
   steps:
   - task: CopyFiles@1
