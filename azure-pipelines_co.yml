@@ -10,6 +10,22 @@ parameters:
 trigger:
 - main
 jobs:
+- job: CO
+  pool: 
+    vmImage: 'windows-latest'
+
+  steps:
+  - checkout: self
+    clean: ${{ parameters.clean }}
+
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'
+
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+    displayName: 'Run a multi-line script'
+  
 - job: CP
   pool: Default
   
@@ -17,6 +33,5 @@ jobs:
   - task: CopyFiles@1
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
-      TargetFolder: C:\azure\agent\_src
+      TargetFolder: C:\azure\agent\_src\shopizer
       OverWrite: true
-
