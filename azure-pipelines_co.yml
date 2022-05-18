@@ -28,7 +28,7 @@ jobs:
   
 - job: CP
   pool: 
-   vmImage: GPRLAP
+   Agent name: GPRLAP
   
   steps:
   - task: CopyFiles@1
