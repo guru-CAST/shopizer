@@ -11,8 +11,7 @@ trigger:
 - main
 jobs:
 - job: CP
-  pool: 
-   name: 'GPRLAP'
+  pool: Default
   
   steps:
   - task: CopyFiles@1
