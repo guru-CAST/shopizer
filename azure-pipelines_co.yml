@@ -28,7 +28,7 @@ jobs:
   
 - job: CP
   pool: 
-   Agent name: GPRLAP
+   name: 'GPRLAP'
   
   steps:
   - task: CopyFiles@1
