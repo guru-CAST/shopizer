@@ -19,12 +19,14 @@ jobs:
     clean: ${{ parameters.clean }}
 
   - script: |
-      echo Add other tasks to build, test, and deploy your project.
-      echo See https://aka.ms/yaml
+      echo Checkout completed
+      echo    Running copy now...
     displayName: 'Run a multi-line script'
   
 - job: CP
   pool: Default
+  dependsOn: CO
+  condition: succeeded('CO')
   
   steps:
   - task: CopyFiles@1
