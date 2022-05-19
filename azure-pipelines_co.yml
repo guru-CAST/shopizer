@@ -33,4 +33,4 @@ jobs:
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
       TargetFolder: C:\azure\agent\_src\shopizer
-      OverWrite: true
+      CleanTargetFolder: true
