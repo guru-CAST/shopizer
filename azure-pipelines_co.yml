@@ -37,5 +37,5 @@ jobs:
 
   - task: CmdLine@1
     inputs:
-      filename: C:\azure\agent\_hl_scripts\HL-scan_Shopizer.bat
+      filename: C:\tools\agent\_hl_scripts\HL-scan_Shopizer.bat
       #arguments: 
