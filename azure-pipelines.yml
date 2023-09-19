@@ -22,9 +22,9 @@ stages:
         checkout: https://github.com/guru-CAST/shopizer
         path: \latest
   
-  task: Docker@2
-    inputs:
-      containerRegistry: 'hl-docker'
-      repository: 'https://hub.docker.com/r/casthighlight/hl-agent-cli'
-      command: 'run'
-      arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/hl-agent-cli –sourceDir src_dir –workingDir work_dir –skipUpload'
+  # task: Docker@2
+  #  inputs:
+  #    containerRegistry: 'hl-docker'
+  #    repository: 'https://hub.docker.com/r/casthighlight/hl-agent-cli'
+  #    command: 'run'
+  #    arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/hl-agent-cli –sourceDir src_dir –workingDir work_dir –skipUpload'
