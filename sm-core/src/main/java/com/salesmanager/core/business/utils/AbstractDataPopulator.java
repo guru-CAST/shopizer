@@ -1,5 +1,5 @@
 /**
- * 
+ * Just a dummy code change.
  */
 package com.salesmanager.core.business.utils;
 
