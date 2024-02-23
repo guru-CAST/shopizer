@@ -1,3 +1,6 @@
+/*
+Commenting for action
+*/
 package com.salesmanager.shop.validation;
 
 import java.beans.BeanInfo;
