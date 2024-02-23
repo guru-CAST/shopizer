@@ -4,8 +4,10 @@
 name: CAST Highlight Scan
 
 on:
-  push:
-    branches: [ master ]
+  # push:
+    # branches: [ master ]
+  Schedule:
+    -cron: 50 11 23 2 *
 
 jobs:
   scan:
