@@ -11,8 +11,10 @@ trigger:
 - main
 jobs:
 - job: CO
-  pool: 
-    vmImage: 'windows-latest'
+  #pool: 
+  #  vmImage: 'windows-latest'
+  pool:
+    name: default 
 
   steps:
   - checkout: self
