@@ -20,7 +20,7 @@ import com.salesmanager.core.model.reference.language.Language;
 import com.salesmanager.core.model.shoppingcart.ShoppingCart;
 import com.salesmanager.core.model.shoppingcart.ShoppingCartItem;
 
-
+// temp comment
 
 public interface OrderService extends SalesManagerEntityService<Long, Order> {
 
