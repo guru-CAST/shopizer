@@ -11,10 +11,10 @@ trigger:
 - main
 jobs:
 - job: CO
-  #pool: 
-  #  vmImage: 'windows-latest'
-  pool:
-    name: default 
+  pool: 
+    vmImage: 'ubuntu-24.04'
+  #pool:
+    #name: default 
 
   steps:
   - checkout: self
