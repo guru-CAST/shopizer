@@ -37,7 +37,14 @@ jobs:
       TargetFolder: C:\azure\agent\_src\shopizer
       CleanTargetFolder: true
 
-  - task: CmdLine@1
+#  - task: CmdLine@1
+#    inputs:
+#      filename: C:\tools\agent\_hl_scripts\HL-scan_Shopizer.bat
+#      #arguments: 
+
+  - task: Docker@2
     inputs:
-      filename: C:\tools\agent\_hl_scripts\HL-scan_Shopizer.bat
-      #arguments: 
+      containerRegistry: 'hl-docker'
+      repository: 'https://hub.docker.com/r/casthighlight/cli'
+      command: 'run'
+      arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli –sourceDir src_dir –workingDir work_dir –skipUpload'
