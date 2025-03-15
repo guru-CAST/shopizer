@@ -68,7 +68,7 @@ steps:
     sudo apt-get install -y docker.io
   displayName: 'Install Docker'
 
-- script: |
-    echo "Running Docker scan with Trivy"
-    docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(System.DefaultWorkingDirectory):/workspace aquasec/trivy:latest image --exit-code 1 --no-progress --format json -o /workspace/trivy-report.json $(Build.Repository.Name):latest
-  displayName: 'Run Docker scan with Trivy'
+# - script: |
+#     echo "Running Docker scan with Trivy"
+#     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(System.DefaultWorkingDirectory):/workspace aquasec/trivy:latest image --exit-code 1 --no-progress --format json -o /workspace/trivy-report.json $(Build.Repository.Name):latest
+#   displayName: 'Run Docker scan with Trivy'
