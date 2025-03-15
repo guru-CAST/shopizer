@@ -45,7 +45,7 @@ steps:
 
 - script: |
      sudo apt-get update
-     sudo apt-get install -y docker.io
+     sudo apt-get install -y docker
       displayName: 'Install Docker'
 
 #- task: Docker@2
