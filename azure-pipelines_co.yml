@@ -54,7 +54,7 @@
 #      arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli –sourceDir src_dir –workingDir work_dir –skipUpload'
 
 trigger:
-- main  # You can specify the branch you want to trigger the pipeline on
+- master  # You can specify the branch you want to trigger the pipeline on
 
 pool:
   vmImage: 'ubuntu-latest'  # You can change the image to 'windows-latest' or 'macos-latest' if needed
@@ -64,13 +64,11 @@ steps:
   displayName: 'Checkout code'
 
 - script: |
-    echo "Running Docker scan with Trivy"
-    docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(System.DefaultWorkingDirectory):/workspace aquasec/trivy:latest image --exit-code 1 --no-progress --format json -o /workspace/trivy-report.json <your-repository-name>:latest
-  displayName: 'Run Docker scan with Trivy'
+    sudo apt-get update
+    sudo apt-get install -y docker.io
+  displayName: 'Install Docker'
 
-# - task: PublishBuildArtifacts@1
-#   displayName: 'Publish Trivy Scan Report'
-#   inputs:
-#     PathtoPublish: '$(System.DefaultWorkingDirectory)/trivy-report.json'
-#     ArtifactName: 'TrivyReport'
-#     publishLocation: 'Container'
+- script: |
+    echo "Running Docker scan with Trivy"
+    docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(System.DefaultWorkingDirectory):/workspace aquasec/trivy:latest image --exit-code 1 --no-progress --format json -o /workspace/trivy-report.json $(Build.Repository.Name):latest
+  displayName: 'Run Docker scan with Trivy'
