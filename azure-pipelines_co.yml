@@ -1,51 +1,76 @@
-parameters:
-- name: clean
-  displayName: Checkout clean
-  type: boolean
-  default: false
-  values:
-  - false
-  - true
+# parameters:
+# - name: clean
+#   displayName: Checkout clean
+#   type: boolean
+#   default: false
+#   values:
+#   - false
+#   - true
 
-trigger:
-- main
+# trigger:
+# - main
 
-jobs:
-- job: CO
-  pool: 
-    vmImage: 'ubuntu-24.04'
-  #pool:
-    #name: default 
+# jobs:
+# - job: CO
+#   pool: 
+#     vmImage: 'ubuntu-24.04'
+#   #pool:
+#     #name: default 
 
-  steps:
-  - checkout: self
-    clean: ${{ parameters.clean }}
+#   steps:
+#   - checkout: self
+#     clean: ${{ parameters.clean }}
 
-  - script: |
-      echo Checkout completed
-      echo    Running copy now...
-    displayName: 'Run a multi-line script'
+#   - script: |
+#       echo Checkout completed
+#       echo    Running copy now...
+#     displayName: 'Run a multi-line script'
   
-- job: CP
-  pool: Default
-  dependsOn: CO
-  condition: succeeded('CO')
+# - job: CP
+#   pool: Default
+#   dependsOn: CO
+#   condition: succeeded('CO')
   
-  steps:
-  - task: CopyFiles@1
-    inputs:
-      sourceFolder: '$(Build.SourcesDirectory)'
-      TargetFolder: C:\azure\agent\_src\shopizer
-      CleanTargetFolder: true
+#   steps:
+#   - task: CopyFiles@1
+#     inputs:
+#       sourceFolder: '$(Build.SourcesDirectory)'
+#       TargetFolder: C:\azure\agent\_src\shopizer
+#       CleanTargetFolder: true
+
+
 
 #  - task: CmdLine@1
 #    inputs:
 #      filename: C:\tools\agent\_hl_scripts\HL-scan_Shopizer.bat
 #      #arguments: 
 
-  - task: Docker@2
-    inputs:
-      containerRegistry: 'hl-docker'
-      repository: 'https://hub.docker.com/r/casthighlight/cli'
-      command: 'run'
-      arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli –sourceDir src_dir –workingDir work_dir –skipUpload'
+
+#  - task: Docker@2
+#    inputs:
+#      containerRegistry: 'hl-docker'
+#      repository: 'https://hub.docker.com/r/casthighlight/cli'
+#      command: 'run'
+#      arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli –sourceDir src_dir –workingDir work_dir –skipUpload'
+
+trigger:
+- main  # You can specify the branch you want to trigger the pipeline on
+
+pool:
+  vmImage: 'ubuntu-latest'  # You can change the image to 'windows-latest' or 'macos-latest' if needed
+
+steps:
+- task: Checkout@1
+  displayName: 'Checkout code'
+
+- script: |
+    echo "Running Docker scan with Trivy"
+    docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(System.DefaultWorkingDirectory):/workspace aquasec/trivy:latest image --exit-code 1 --no-progress --format json -o /workspace/trivy-report.json <your-repository-name>:latest
+  displayName: 'Run Docker scan with Trivy'
+
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Publish Trivy Scan Report'
+#   inputs:
+#     PathtoPublish: '$(System.DefaultWorkingDirectory)/trivy-report.json'
+#     ArtifactName: 'TrivyReport'
+#     publishLocation: 'Container'
