@@ -63,10 +63,10 @@ steps:
 - task: Checkout@1
   displayName: 'Checkout code'
 
-- script: |
-    sudo apt-get update
-    sudo apt-get install -y docker.io
-  displayName: 'Install Docker'
+# - script: |
+#     sudo apt-get update
+#     sudo apt-get install -y docker.io
+#   displayName: 'Install Docker'
 
 # - script: |
 #     echo "Running Docker scan with Trivy"
