@@ -31,14 +31,12 @@ steps:
 #   dependsOn: CO
 #   condition: succeeded('CO')
   
-#   steps:
-#   - task: CopyFiles@1
-#     inputs:
-#       sourceFolder: '$(Build.SourcesDirectory)'
-#       TargetFolder: C:\azure\agent\_src\shopizer
-#       CleanTargetFolder: true
-
-
+# steps:
+- task: CopyFiles@1
+  inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      TargetFolder: C:\azure\agent\_src\shopizer
+      CleanTargetFolder: true
 
 #  - task: CmdLine@1
 #    inputs:
