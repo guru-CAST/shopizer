@@ -21,8 +21,8 @@ steps:
 - checkout: self
   #clean: ${{ parameters.clean }}
 
-#   - script: |
-#       echo Checkout completed
+- script: |
+    echo Checkout completed
 #       echo    Running copy now...
 #     displayName: 'Run a multi-line script'
   
