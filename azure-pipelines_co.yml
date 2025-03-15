@@ -43,6 +43,11 @@ steps:
 #      filename: C:\tools\agent\_hl_scripts\HL-scan_Shopizer.bat
 #      #arguments: 
 
+- script: |
+     sudo apt-get update
+     sudo apt-get install -y docker.io
+      displayName: 'Install Docker'
+
 #- task: Docker@2
 - script: |
       command: 'run'
@@ -60,10 +65,6 @@ steps:
 #- task: Checkout@1
 #  displayName: 'Checkout code'
 
-# - script: |
-#     sudo apt-get update
-#     sudo apt-get install -y docker.io
-#   displayName: 'Install Docker'
 
 # - script: |
 #     echo "Running Docker scan with Trivy"
