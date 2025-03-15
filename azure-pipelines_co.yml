@@ -7,8 +7,8 @@
 #   - false
 #   - true
 
-# trigger:
-# - main
+trigger:
+  - main
 
 # jobs:
 # - job: CO
@@ -17,9 +17,9 @@
 #   #pool:
 #     #name: default 
 
-#   steps:
-#   - checkout: self
-#     clean: ${{ parameters.clean }}
+steps:
+- checkout: self
+  #clean: ${{ parameters.clean }}
 
 #   - script: |
 #       echo Checkout completed
@@ -53,15 +53,15 @@
 #      command: 'run'
 #      arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli –sourceDir src_dir –workingDir work_dir –skipUpload'
 
-trigger:
-- master  # You can specify the branch you want to trigger the pipeline on
+#trigger:
+#- master  # You can specify the branch you want to trigger the pipeline on
 
-pool:
-  vmImage: 'ubuntu-latest'  # You can change the image to 'windows-latest' or 'macos-latest' if needed
+#pool:
+#  vmImage: 'ubuntu-latest'  # You can change the image to 'windows-latest' or 'macos-latest' if needed
 
-steps:
-- task: Checkout@1
-  displayName: 'Checkout code'
+#steps:
+#- task: Checkout@1
+#  displayName: 'Checkout code'
 
 # - script: |
 #     sudo apt-get update
