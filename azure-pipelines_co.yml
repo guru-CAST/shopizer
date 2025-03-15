@@ -12,8 +12,8 @@ trigger:
 
 # jobs:
 # - job: CO
-#   pool: 
-#     vmImage: 'ubuntu-24.04'
+pool: 
+  vmImage: 'ubuntu-24.04'
 #   #pool:
 #     #name: default 
 
