@@ -1,77 +1,27 @@
-# parameters:
-# - name: clean
-#   displayName: Checkout clean
-#   type: boolean
-#   default: false
-#   values:
-#   - false
-#   - true
-
 trigger:
   - main
 
-# jobs:
-# - job: CO
 pool: 
   vmImage: 'ubuntu-24.04'
-#   #pool:
-#     #name: default 
 
 steps:
 - checkout: self
-  #clean: ${{ parameters.clean }}
 
 - script: |
     echo Checkout completed
-#       echo    Running copy now...
-#     displayName: 'Run a multi-line script'
-  
-# - job: CP
-#   pool: Default
-#   dependsOn: CO
-#   condition: succeeded('CO')
   
 # steps:
 - task: CopyFiles@1
   inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
-      TargetFolder: C:\azure\agent\_src\shopizer
+      #TargetFolder: C:\azure\agent\_src\shopizer
       CleanTargetFolder: true
-
-#  - task: CmdLine@1
-#    inputs:
-#      filename: C:\tools\agent\_hl_scripts\HL-scan_Shopizer.bat
-#      #arguments: 
 
 - script: |
      sudo apt-get update
      sudo apt-get install -y docker-ce docker-ce-cli containerd.io 
   displayName: 'Install Docker'
 
-#- task: Docker@2
 - script: |
-      # command: 'run'
-      # containerRegistry: 'hl-docker'
-      # repository: 'https://hub.docker.com/r/casthighlight/cli'
-      # arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli --sourceDir src_dir --workingDir work_dir --skipUpload'
-      # docker run --user $UID -v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli --sourceDir /src_dir --workingDir /work_dir --skipUpload
-
-      # echo docker run --user $UID -v $(pwd):/src_dir -v /tmp:/work_dir casthighlight/cli --sourceDir /src_dir --workingDir /work_dir --applicationId 479467 --companyId 9684 --token "5b367e45-0c90-4d23-8492-296dd6812044" --serverUrl https://rpa.casthighlight.com
       docker run --user $UID -v $(pwd):/sourceDir -v /tmp:/workingDir casthighlight/cli --sourceDir /sourceDir --workingDir /workingDir --ignoreDirectories node_modules --includeAllDependencies --applicationId 479467 --companyId 9684 --token "5b367e45-0c90-4d23-8492-296dd6812044" --serverUrl https://rpa.casthighlight.com
   displayName: 'Run Docker Highlight scan'
-
-#trigger:
-#- master  # You can specify the branch you want to trigger the pipeline on
-
-#pool:
-#  vmImage: 'ubuntu-latest'  # You can change the image to 'windows-latest' or 'macos-latest' if needed
-
-#steps:
-#- task: Checkout@1
-#  displayName: 'Checkout code'
-
-
-# - script: |
-#     echo "Running Docker scan with Trivy"
-#     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(System.DefaultWorkingDirectory):/workspace aquasec/trivy:latest image --exit-code 1 --no-progress --format json -o /workspace/trivy-report.json $(Build.Repository.Name):latest
-#   displayName: 'Run Docker scan with Trivy'
