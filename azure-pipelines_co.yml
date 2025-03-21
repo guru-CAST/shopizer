@@ -46,7 +46,7 @@ steps:
 - script: |
      sudo apt-get update
      sudo apt-get install -y docker-ce docker-ce-cli containerd.io 
-      displayName: 'Install Docker'
+  displayName: 'Install Docker'
 
 #- task: Docker@2
 - script: |
