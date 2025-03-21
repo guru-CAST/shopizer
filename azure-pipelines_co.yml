@@ -14,7 +14,7 @@ steps:
 - task: CopyFiles@1
   inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
-      #TargetFolder: C:\azure\agent\_src\shopizer
+      TargetFolder: /tmp
       CleanTargetFolder: true
 
 - script: |
