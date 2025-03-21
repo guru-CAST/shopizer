@@ -50,10 +50,12 @@ steps:
 
 #- task: Docker@2
 - script: |
-      command: 'run'
-      containerRegistry: 'hl-docker'
-      repository: 'https://hub.docker.com/r/casthighlight/cli'
-      arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli –sourceDir src_dir –workingDir work_dir –skipUpload'
+      # command: 'run'
+      # containerRegistry: 'hl-docker'
+      # repository: 'https://hub.docker.com/r/casthighlight/cli'
+      # arguments: '-v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli –sourceDir src_dir –workingDir work_dir –skipUpload'
+      docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(System.DefaultWorkingDirectory):/workspace aquasec/trivy:latest image --exit-code 1 --no-progress --format json -o /workspace/trivy-report.json $(Build.Repository.Name):latest
+  displayName: 'Run Docker Highlight scan'
 
 #trigger:
 #- master  # You can specify the branch you want to trigger the pipeline on
