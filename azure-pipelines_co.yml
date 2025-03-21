@@ -57,7 +57,7 @@ steps:
       # docker run --user $UID -v $(Build.SourcesDirectory):/src_dir -v $(Agent.TempDirectory):/work_dir casthighlight/cli –-sourceDir /src_dir –-workingDir /work_dir –-skipUpload
 
       echo docker run --user $UID -v $(pwd):/src_dir -v /tmp:/work_dir casthighlight/cli –-sourceDir /src_dir –-workingDir /work_dir –-applicationId 479467 --companyId 9684 --token "5b367e45-0c90-4d23-8492-296dd6812044" --serverUrl https://rpa.casthighlight.com
-      docker run --user $UID -v $(pwd):/sourceDir -v /tmp:/work_dir casthighlight/cli –-sourceDir /sourceDir –-workingDir /workingDir –-applicationId 479467 --companyId 9684 --token "5b367e45-0c90-4d23-8492-296dd6812044" --serverUrl https://rpa.casthighlight.com
+      docker run --user $UID -v $(pwd):/sourceDir -v /tmp:/workingDir casthighlight/cli –-sourceDir /sourceDir –-workingDir /workingDir –-applicationId 479467 --companyId 9684 --token "5b367e45-0c90-4d23-8492-296dd6812044" --serverUrl https://rpa.casthighlight.com
   displayName: 'Run Docker Highlight scan'
 
 #trigger:
