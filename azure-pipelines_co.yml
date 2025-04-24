@@ -14,7 +14,7 @@ steps:
 - task: CopyFiles@1
   inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
-      TargetFolder: /tmp
+      TargetFolder: /tmp/gpr
       CleanTargetFolder: true
 
 - script: |
