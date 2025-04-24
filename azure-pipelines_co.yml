@@ -23,5 +23,5 @@ steps:
   displayName: 'Install Docker'
 
 - script: |
-      docker run --user $UID -v $(pwd):/sourceDir -v /tmp:/workingDir casthighlight/cli --sourceDir /sourceDir --workingDir /workingDir --ignoreDirectories node_modules --includeAllDependencies --applicationId 479467 --companyId 9684 --token "5b367e45-0c90-4d23-8492-296dd6812044" --serverUrl https://rpa.casthighlight.com
+      docker run --user $UID -v $(pwd):/sourceDir -v /tmp/gpr:/workingDir casthighlight/cli --sourceDir /sourceDir --workingDir /workingDir --ignoreDirectories node_modules --includeAllDependencies --applicationId 479467 --companyId 9684 --token "5b367e45-0c90-4d23-8492-296dd6812044" --serverUrl https://rpa.casthighlight.com
   displayName: 'Run Docker Highlight scan'
